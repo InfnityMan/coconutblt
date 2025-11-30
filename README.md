@@ -38,3 +38,29 @@ Licensing notes
 - Parts inspired by BLT follow CC-BY-NC-4.0 (non-commercial) — check `blt/README.md` and the license files before reusing BLT-derived code.
 
 That's it — the repo provides a simple playground for research. See `docs/USAGE.md` if you want to run larger experiments.
+
+First steps — what to run after cloning
+--------------------------------------
+
+If you just cloned the repo, here's a short set of commands that usually work on Linux / macOS. They create an isolated virtual environment, install requirements, run a quick smoke test, and start a tiny toy training.
+
+```bash
+# clone (if you haven't already)
+git clone https://github.com/InfnityMan/coconutblt.git
+cd coconutblt
+
+# create a Python virtual environment (recommended)
+python3 -m venv .venv
+source .venv/bin/activate
+
+# install the project's dependencies
+pip install -r requirements.txt
+
+# quick smoke (run a short test to verify things work)
+PYTHONPATH=src python3 -m pytest -q tests/test_smoke.py
+
+# run a short toy training (CPU friendly example)
+PYTHONPATH=src python3 scripts/train_toy.py --steps 5 --device cpu
+```
+
+If you run into problems, check `docs/USAGE.md` for more detail, or open an issue describing the platform and the error you saw.
